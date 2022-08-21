@@ -3,6 +3,7 @@
 > Create nested checkbox from a given flat array of objects with title and parentId pairs.  
 
 ## [Try this Online!](https://codesandbox.io/url)
+## [Live Demo!](https://checkbox-tree-3111.vercel.app/)
 
 <img src="https://url" />
 
