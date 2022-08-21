@@ -1,22 +1,25 @@
-import { Button } from 'antd';
+import { Breadcrumb, Layout } from 'antd';
 import React from 'react';
 
 import './index.css';
-import logo from './logo.svg';
 
 import './App.css';
 
-const App: React.FC = () => {
-    return (
-        <main className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>Nested Checkbox Demo</p>
+const { Header, Content, Footer } = Layout;
 
-                <Button type="primary">Ant Button</Button>
-            </header>
-        </main>
-    );
-};
+const App: React.FC = () => (
+    <Layout className="layout">
+        <Header>
+            <div className="logo">Checkbox Tree</div>
+        </Header>
+        <Content style={{ padding: '0 50px' }}>
+            <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+            <div className="site-layout-content">Main content</div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+            Design ©2022 Created by Rishab Mishra
+        </Footer>
+    </Layout>
+);
 
 export default App;

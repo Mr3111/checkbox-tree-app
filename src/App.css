@@ -1,53 +1,29 @@
 @import '~antd/dist/antd.css';
-.App {
-  text-align: center;
+
+.layout{
+    min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-layout-header{
+    color: white;
+    /*font-family: "Poppins", sans-serif;*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.site-layout-content {
+    min-height: calc(100vh - 164px);
+    padding: 24px;
+    background: #fff;
 }
 
-.App-header {
-  /*background-color: #282c34;*/
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  /*color: white;*/
+#components-layout-demo-top .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
 }
 
-.App-link {
-  color: #61dafb;
+.ant-row-rtl #components-layout-demo-top .logo {
+    float: right;
+    margin: 16px 0 16px 24px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
-}
-
-/*.checkmark {*/
-/*  @apply bg-transparent rounded border-solid border h-4 absolute top-0 left-0 w-4;*/
-/*  border-color: rgba(202, 209, 213, 1);*/
-/*}*/
-
-/*.checkmark:after {*/
-/*  @apply hidden absolute;*/
-/*  content: "";*/
-/*}*/
