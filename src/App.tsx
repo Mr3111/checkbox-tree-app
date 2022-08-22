@@ -1,5 +1,6 @@
-import { Breadcrumb, Layout, Space } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { Breadcrumb, Layout, Space, Typography } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 
 import './index.css';
 
@@ -8,17 +9,30 @@ import { JsonInput, Tree } from './components';
 import type { Children } from './components/tree/types/Tree';
 import getTreeData from './components/tree/utils/getTreeData';
 import { nodes } from './constants/nodes';
+import { localStorageGetItem, localStorageSetItem } from './utils';
 
 const { Header, Content, Footer } = Layout;
+const { Text } = Typography;
+
+export type IError = {
+    status: 'error' | 'warning' | '';
+    message?: string;
+};
 
 const App: React.FC = () => {
+    const LOCAL_STORAGE_KEY = 'treeData';
     const [nodeList, setNodeList] = useState<Children>([]);
+    const [error, setError] = useState<IError | undefined>();
+    const recoveryFlag = useRef(!!localStorageGetItem(LOCAL_STORAGE_KEY));
     const [json, setJson] = useState<string>(
-        localStorage.getItem('json') ?? JSON.stringify(nodes)
+        localStorage.getItem(LOCAL_STORAGE_KEY) ?? JSON.stringify(nodes)
     );
+
     useEffect(() => {
-        setNodeList(getTreeData(JSON.parse(json)));
-        localStorage.setItem('json', json);
+        if (!error) {
+            setNodeList(getTreeData(JSON.parse(json)));
+        }
+        localStorageSetItem(LOCAL_STORAGE_KEY, json);
     }, [json]);
     return (
         <Layout className="layout">
@@ -28,10 +42,22 @@ const App: React.FC = () => {
             <Content style={{ padding: '0 50px' }}>
                 <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
                 <div className="site-layout-content">
-                    {/*{JSON.stringify(nodeList, undefined, 2)}*/}
                     <Space direction="vertical">
+                        {recoveryFlag && (
+                            <Space direction="horizontal">
+                                <InfoCircleOutlined />
+                                <Text type="secondary">
+                                    Restored data from local storage
+                                </Text>
+                            </Space>
+                        )}
                         <Space direction="vertical">
-                            <JsonInput handleSubmit={setJson} />
+                            <JsonInput
+                                value={json}
+                                setValue={setJson}
+                                error={error}
+                                setError={setError}
+                            />
                         </Space>
                         <Tree treeData={nodeList} />
                     </Space>

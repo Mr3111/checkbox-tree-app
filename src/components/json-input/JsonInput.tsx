@@ -1,6 +1,8 @@
 import { Button, Input, Space, Typography } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import { z } from 'zod';
+
+import type { IError } from '../../App';
 const { TextArea } = Input;
 const { Text } = Typography;
 
@@ -12,17 +14,13 @@ const INode = z.array(
 );
 
 type JsonInputProps = {
-    handleSubmit: (value: string) => void;
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+    error?: IError;
+    setError: React.Dispatch<React.SetStateAction<IError | undefined>>;
 };
 
-type IError = {
-    status: 'error' | 'warning' | '';
-    message?: string;
-};
-
-const JsonInput = ({ handleSubmit }: JsonInputProps) => {
-    const [error, setError] = useState<IError>();
-    const [value, setValue] = useState<string>('');
+const JsonInput = ({ value, setValue, error, setError }: JsonInputProps) => {
     function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
         const value = e.target.value;
         setValue(value);
@@ -72,7 +70,7 @@ const JsonInput = ({ handleSubmit }: JsonInputProps) => {
                 <Button
                     type="primary"
                     disabled={error?.status !== ''}
-                    onClick={() => handleSubmit(value)}
+                    onClick={() => setValue(value)}
                 >
                     Transform 🚀
                 </Button>
@@ -81,4 +79,4 @@ const JsonInput = ({ handleSubmit }: JsonInputProps) => {
     );
 };
 
-export default JsonInput;
+export default React.memo(JsonInput);
