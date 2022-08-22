@@ -29,7 +29,7 @@ const App: React.FC = () => {
                 <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
                 <div className="site-layout-content">
                     {/*{JSON.stringify(nodeList, undefined, 2)}*/}
-                    <Space direction="horizontal">
+                    <Space direction="vertical">
                         <Space direction="vertical">
                             <JsonInput handleSubmit={setJson} />
                         </Space>
