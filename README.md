@@ -2,10 +2,7 @@
 
 > Create nested checkbox from a given flat array of objects with title and parentId pairs.  
 
-## [Try this Online!](https://codesandbox.io/url)
 ## [Live Demo!](https://checkbox-tree-3111.vercel.app/)
-
-<img src="https://url" />
 
 This is using the official [Vite](https://vitejs.dev/) [react-ts](https://stackblitz.com/edit/vitejs-vite-is3dmk?file=index.html&terminal=dev) template(`npm init vite@latest myapp -- --template react-ts`) and some extended setup.
 
@@ -55,7 +52,7 @@ yarn serve     # launch server for production bundle in local
 
 # Background
 
-This is an alternative to [create-react-app](https://github.com/facebook/create-react-app), based on [Vite](https://github.com/facebook/create-react-app).  
+This is using an alternative to [create-react-app](https://github.com/facebook/create-react-app), based on [Vite](https://github.com/facebook/create-react-app).  
 This project contains a very opinionated setup. 😀
 
 # License
