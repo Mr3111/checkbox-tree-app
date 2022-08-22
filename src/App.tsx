@@ -1,25 +1,25 @@
-import { Breadcrumb, Layout } from 'antd';
+import { Breadcrumb, Layout, Space } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 import './index.css';
 
 import './App.css';
-import { Tree } from './components';
+import { JsonInput, Tree } from './components';
 import type { Children } from './components/tree/types/Tree';
 import getTreeData from './components/tree/utils/getTreeData';
+import { nodes } from './constants/nodes';
 
 const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => {
     const [nodeList, setNodeList] = useState<Children>([]);
+    const [json, setJson] = useState<string>(
+        localStorage.getItem('json') ?? JSON.stringify(nodes)
+    );
     useEffect(() => {
-        fetch('./node_list')
-            .then((res) => res.json())
-            .then((data) => {
-                setNodeList(getTreeData(data));
-            })
-            .catch();
-    }, []);
+        setNodeList(getTreeData(JSON.parse(json)));
+        localStorage.setItem('json', json);
+    }, [json]);
     return (
         <Layout className="layout">
             <Header>
@@ -29,7 +29,12 @@ const App: React.FC = () => {
                 <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
                 <div className="site-layout-content">
                     {/*{JSON.stringify(nodeList, undefined, 2)}*/}
-                    <Tree treeData={nodeList} />
+                    <Space direction="horizontal">
+                        <Space direction="vertical">
+                            <JsonInput handleSubmit={setJson} />
+                        </Space>
+                        <Tree treeData={nodeList} />
+                    </Space>
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
