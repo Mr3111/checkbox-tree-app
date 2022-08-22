@@ -71,7 +71,7 @@ const JsonInput = ({ handleSubmit }: JsonInputProps) => {
                 </Button>
                 <Button
                     type="primary"
-                    disabled={!!error}
+                    disabled={error?.status !== ''}
                     onClick={() => handleSubmit(value)}
                 >
                     Transform 🚀
