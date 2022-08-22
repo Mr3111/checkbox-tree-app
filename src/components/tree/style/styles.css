@@ -1,0 +1,36 @@
+.tree .ant-tree-checkbox:hover::after,
+.tree .ant-tree-checkbox-inner:hover {
+    border-color: #d9d9d9 !important;
+}
+
+.tree .ant-tree-node-content-wrapper .ant-tree-node-content-wrapper-open span {
+    font-weight: bolder;
+}
+
+.tree .ant-tree-checkbox-checked span,
+.tree .ant-tree-checkbox-indeterminate span {
+    background: white;
+    border-color: #d9d9d9 !important;
+}
+
+.tree .ant-tree-node-content-wrapper-open span,
+.ant-tree-node-content-wrapper-close span {
+    font-weight: bolder;
+}
+
+.tree .ant-tree-switcher {
+    color: #42c3a9;
+}
+
+.tree .ant-tree-checkbox-checked span::after,
+.tree .ant-tree-checkbox-indeterminate span::after {
+    background-color: #42c3a9;
+    border-radius: 50%;
+    border: none;
+    width: 8px;
+    transform: rotate(0) scale(1) translate(0%, -50%);
+}
+
+.tree .ant-tree-checkbox-indeterminate span::after {
+    transform: rotate(0) scale(1) translate(-50%, -50%);
+}

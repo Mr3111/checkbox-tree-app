@@ -1,4 +1,4 @@
-import type { Children, Id, INode, ITreeNode, ParentId } from '../types/tree';
+import type { Children, Id, INode, ITreeNode, ParentId } from '../types/Tree';
 
 /**
  * It takes a title and a jsonData array, and returns a tree node with a key and title equal to the title, and children

@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import './index.css';
 
 import './App.css';
-import type { Children } from './types/tree';
-import { getTreeData } from './utils';
+import { Tree } from './components';
+import type { Children } from './components/tree/types/Tree';
+import getTreeData from './components/tree/utils/getTreeData';
 
 const { Header, Content, Footer } = Layout;
 
@@ -27,7 +28,8 @@ const App: React.FC = () => {
             <Content style={{ padding: '0 50px' }}>
                 <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
                 <div className="site-layout-content">
-                    {JSON.stringify(nodeList, undefined, 2)}
+                    {/*{JSON.stringify(nodeList, undefined, 2)}*/}
+                    <Tree treeData={nodeList} />
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
