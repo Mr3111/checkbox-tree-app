@@ -18,9 +18,16 @@ type JsonInputProps = {
     setValue: React.Dispatch<React.SetStateAction<string>>;
     error?: IError;
     setError: React.Dispatch<React.SetStateAction<IError | undefined>>;
+    handleTransform: () => void;
 };
 
-const JsonInput = ({ value, setValue, error, setError }: JsonInputProps) => {
+const JsonInput = ({
+    value,
+    setValue,
+    error,
+    setError,
+    handleTransform,
+}: JsonInputProps) => {
     function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
         const value = e.target.value;
         setValue(value);
@@ -70,7 +77,7 @@ const JsonInput = ({ value, setValue, error, setError }: JsonInputProps) => {
                 <Button
                     type="primary"
                     disabled={error?.status !== ''}
-                    onClick={() => setValue(value)}
+                    onClick={handleTransform}
                 >
                     Transform 🚀
                 </Button>
@@ -79,4 +86,4 @@ const JsonInput = ({ value, setValue, error, setError }: JsonInputProps) => {
     );
 };
 
-export default React.memo(JsonInput);
+export default JsonInput;

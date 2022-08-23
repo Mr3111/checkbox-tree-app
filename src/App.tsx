@@ -29,11 +29,14 @@ const App: React.FC = () => {
     );
 
     useEffect(() => {
-        if (!error) {
-            setNodeList(getTreeData(JSON.parse(json)));
-        }
         localStorageSetItem(LOCAL_STORAGE_KEY, json);
     }, [json]);
+
+    function handleTransform() {
+        if (error?.status === '') {
+            setNodeList(getTreeData(JSON.parse(json)));
+        }
+    }
     return (
         <Layout className="layout">
             <Header>
@@ -55,6 +58,7 @@ const App: React.FC = () => {
                             <JsonInput
                                 value={json}
                                 setValue={setJson}
+                                handleTransform={handleTransform}
                                 error={error}
                                 setError={setError}
                             />
