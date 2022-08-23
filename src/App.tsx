@@ -29,6 +29,9 @@ const App: React.FC = () => {
     );
 
     useEffect(() => {
+        if (error?.status === '') {
+            setNodeList(getTreeData(JSON.parse(json)));
+        }
         localStorageSetItem(LOCAL_STORAGE_KEY, json);
     }, [json]);
 
